@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     # Apps de terceiros
     ####
     # Apps do sistema
-    #'funcionario',
+    'funcionario',
 
 ]
 
