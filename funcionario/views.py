@@ -68,4 +68,6 @@ class FuncionarioUpdate(UpdateView):
 
 class FuncionarioDelete(DeleteView):
     model = Funcionario
-    success_url ='/'
+    template_name = 'funcionario/funcionario_delete.html'
+    success_message = 'Success: Book was deleted.'
+    success_url = ('funcionarios/')

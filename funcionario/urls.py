@@ -19,5 +19,5 @@ urlpatterns = [
     path('cadastrar/', views.FuncionarioCreate.as_view(), name='funcionario_create'),
     path('<int:pk>/', views.FuncionarioDetail.as_view(), name='funcionario_detail'),
     path('<int:pk>/editar/', views.FuncionarioUpdate.as_view(), name='funcionario_edit'),
-    path('funcionario/<int:pk>/deletar', views.FuncionarioDelete.as_view(), name='funcionario_delete'),    
+    path('<int:pk>/deletar/', views.FuncionarioDelete.as_view(), name='funcionario_delete'),    
 ]

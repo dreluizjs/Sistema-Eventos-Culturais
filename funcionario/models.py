@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse_lazy
+from django.utils.text import slugify
 from django.utils import timezone
 
 SEXO = [

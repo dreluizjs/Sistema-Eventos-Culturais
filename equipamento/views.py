@@ -29,6 +29,6 @@ class EquipamentoUpdate(UpdateView):
 
 class EquipamentoDelete(DeleteView):
     model = Equipamento
-    template_name = 'equipamento/equipamento_delete.html'
+    #template_name = 'equipamento/equipamento_delete.html'
     success_message = 'Success: Book was deleted.'
     success_url = reverse_lazy('equipamento/')
