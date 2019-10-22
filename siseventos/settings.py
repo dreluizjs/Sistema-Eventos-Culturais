@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     # Apps do sistema
     'usuario',
     'funcionario',
+    'equipamento',
 
 ]
 

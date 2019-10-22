@@ -1,0 +1,43 @@
+{%extends 'base.html'%} 
+
+{% load crispy_forms_tags %}
+
+{% block title %} SGEC Admin| Edição de Equipamento {% endblock %} 
+
+{% block equipamento %}active{% endblock %} 
+
+{% block titulo %} Edição de Equipamento{% endblock %}
+
+{% block breadcrumb %} 
+<li class="breadcrumb-item"><i class="far fa-id-badge fa-lg"></i></li>
+<li class="breadcrumb-item"><a href="#">Equipamentos</a></li>
+<li class="breadcrumb-item"><a href="#">Edição de Equipamento</a></li>
+{% endblock %} 
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="tile">
+      <div class="row">
+        <div class="col-lg-6">
+          <form role="form" method="POST" novalidate>
+            {% csrf_token %} 
+            <div class="form-group">
+              {{ form|crispy }} 
+            </div>
+            <div class="tile-footer">
+              <button class="btn btn-primary" type="submit">Cadastrar</button>
+              <button class="btn btn-info" type="reset">Resetar</button>
+              <button class="btn btn-danger" type="cancel">Cancelar</button>
+            </div>
+          </form>
+        </div>        
+      </div>     
+    </div>
+  </div>
+</div>
+{% endblock %} 
+
+
+{% block script %} {% endblock %}
