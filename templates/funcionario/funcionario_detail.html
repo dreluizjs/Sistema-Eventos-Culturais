@@ -1,25 +1,32 @@
-{%extends 'base.html'%}
+{%extends 'base.html'%} 
 
-{% block title %} SGP Admin| Tabela Pessoas {% endblock %}
+{% block title %} SGEC Admin| Funcionário {% endblock %} 
 
-{% block section %}
-    <h2 class="mb-4">Informações Pessoais</h2>
-    <hr>
+{% block funcionario %}active{% endblock %} 
 
+{% block titulo %} Informações de Funcionário{% endblock %}
+
+{% block breadcrumb %} 
+<li class="breadcrumb-item"><i class="far fa-id-badge fa-lg"></i></li>
+<li class="breadcrumb-item"><a href="#">Funcionários</a></li>
+<li class="breadcrumb-item"><a href="#">Informações de Funcionário</a></li>
 {% endblock %} 
 
 {% block content %}
-    <div class="card mb-4">
-        <div class="card-body">
-            {{object.nome}} 
+
+<div class="tile mb-4">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="mb-3 line-head" id="buttons">{{object.nome}}</h2>
         </div>
-        
+      </div>
     </div>
-
-  
-{% endblock %}
-
-{% block script %}
+    <div class="row">
+      
+    </div>
+  </div>
 {% endblock %} 
 
 
+{% block script %} {% endblock %}

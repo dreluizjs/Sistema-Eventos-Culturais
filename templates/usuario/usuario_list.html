@@ -2,12 +2,12 @@
 
 {% block title %} SGEC Admin| Funcionarios {% endblock %} 
 
-{% block funcionario %}active{% endblock %} 
+{% block usuario %}active{% endblock %} 
 
-{% block titulo %} Funcionários{% endblock %}
+{% block titulo %} Usuarios{% endblock %}
 
 {% block breadcrumb %} 
-<li class="breadcrumb-item"><a href="#">Funcionários</a></li>
+<li class="breadcrumb-item"><a href="#">Usuarios</a></li>
 {% endblock %} 
 
 {% block content %}
@@ -21,10 +21,10 @@
             <thead>
               <tr>
                 <th>ID</th>
-                  <th>Nome</th>
+                  <th>Username</th>
                   <th>Email</th>
-                  <th>Telefone</th>
-                  <th>Cargo</th>
+                  <th>Nivel</th>
+                  <th>Status</th>
                   <th>Ações</th>
               </tr>
             </thead>
@@ -32,10 +32,24 @@
               {% for object in object_list %}
               <tr>
                 <td>{{object.id}}</td>
-                <td><a href="{{object.get_absolute_url}}">{{object.nome}}</a></td>
+                <td><a href="{{object.get_absolute_url}}">{{object.username}}</a></td>
                 <td>{{object.email}}</td>
-                <td>{{object.telefone}}</td>
-                <td>{{object.cargo}}</td>
+                <td>
+                  {% if object.is_superuser %}
+                      <i class="fas fa-user-tie"> Super Usuário</i>
+                  {% elif object.is_admin %}
+                      <i class="fas fa-user-tie"> Administrador</i>
+                  {% elif object.is_staff %}
+                      <i class="fas fa-user-tie"> Membro da Equipe</i>
+                  {% endif %}
+                </td>
+                <td>
+                  {% if object.is_active == True %}
+                      <i class="fas fa-check text-success"></i> Ativo
+                  {% else %}
+                      <i class="fas fa-times text-danger"></i> Desativado
+                  {% endif %}
+              </td>
                 <td>
                   <a href="{{object.get_absolute_url}}" data-toggle="tooltip" title="Visualizar"><i class="fa fa-fw fa-eye"></i></a>
                   <a href="{{object.get_absolute_url}}editar/" data-toggle="tooltip" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
