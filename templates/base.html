@@ -56,15 +56,10 @@
             <li><a class="app-menu__item {% block evento %}{% endblock %}" href="#"><i class="app-menu__icon fas fa-theater-masks"></i><span class="app-menu__label">Evento</span></a></li>
             <li><a class="app-menu__item {% block despesa %}{% endblock %}" href="#"><i class="app-menu__icon fas fa-money"></i><span class="app-menu__label">Despesas</span></a></li>
             <hr>
-            <li><a class="app-menu__item {% block funcionario %}{% endblock %}" href="#"><i class="app-menu__icon far fa-id-badge"></i><span class="app-menu__label">Funcionários</span></a></li>
+            <li><a class="app-menu__item {% block funcionario %}{% endblock %}" href="{% url 'funcionario:funcionario_list' %}"><i class="app-menu__icon far fa-id-badge"></i><span class="app-menu__label">Funcionários</span></a></li>
             <li><a class="app-menu__item {% block equipamento %}{% endblock %}" href="#"><i class="app-menu__icon fas fa-toolbox"></i><span class="app-menu__label">Equipamentos</span></a></li>
             <hr>
-            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fas fa-book"></i><span class="app-menu__label">Sobre</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-              <ul class="treeview-menu">
-                <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Projeto</a></li>
-                <li><a class="treeview-item" href="#"><i class="icon fa fa-circle-o"></i> Tecnologias</a></li>
-               </ul>
-            </li>
+            <li><a class="app-menu__item {% block sobre %}{% endblock %}" href="{% url 'sobre' %}"><i class="app-menu__icon fa fa-book"></i> <span class="app-menu__label">Sobre</span></a></li>
           </ul>
         </aside>
     
@@ -73,8 +68,7 @@
             <div>
               <h1> {% block titulo %}{% endblock %} </h1>
             </div>
-            <ul class="app-breadcrumb breadcrumb">
-              <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+            <ul class="app-breadcrumb breadcrumb">              
               {% block breadcrumb %}{% endblock %}
             </ul>
           </div>

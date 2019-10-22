@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse_lazy
 from django.utils import timezone
 
 SEXO = [
@@ -23,3 +24,10 @@ class Funcionario(models.Model):
     criado     = models.DateTimeField(auto_now_add=True)
     update     = models.DateTimeField(auto_now=True)
     ativo      = models.BooleanField()
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.nome)
+        super(Funcionario, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse_lazy('funcionario:funcionario_detail', kwargs={'pk':self.pk})
