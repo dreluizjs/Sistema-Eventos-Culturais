@@ -1,34 +1,30 @@
 {% load static %}
 <!doctype html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
-     <!-- Font Awesome -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="{% static 'node_modules/@fortawesome/fontawesome-free/css/all.css' %}">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- App Style -->
     <link rel="stylesheet" href="{% static '/css/style.css' %}">
- 
     <title>{% block title %} {% endblock %}</title>
-</head>
+  </head>
 
-<body class="app sidebar-mini rtl">
-
+  <body class="app sidebar-mini">
     <!-- Navbar-->
     <header class="app-header">
       <a class="app-header_logo" href="index.html">SGEC</a>
       <!-- Sidebar toggle button-->
       <a class="app-sidebar_toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
-      <!-- Navbar Right Menu-->
       
-      <ul class="app-nav">
-          
-          <!-- User Menu-->
+      <!-- Navbar Right Menu-->     
+      <ul class="app-nav">          
+        <!-- Search -->
         <li class="app-search">
           <input class="app-search_input" type="search" placeholder="Procurar">
           <button class="app-search_button"><i class="fa fa-search"></i></button>
@@ -37,55 +33,58 @@
         <!--Notification Menu-->
         <li class="dropdown"><a class="app-nav_item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a></li>
         <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav_item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+        <li class="dropdown">
+          <a class="app-nav_user" href="#" data-toggle="dropdown" aria-label="Open Profile Menu">
+            <img class="app-nav_user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="profile"/>           
+            <div>
+              <p class="app-nav_user-name">{{user.username}}</p>            </div>
+          </a>          
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
+            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
           </ul>
-        </li>
-        <li class="dropdown"><a class="app-nav_item" data-toggle="dropdown" aria-label="Open Profile Menu">{{user.username}}</a>
+        </li>     
       </ul>
     </header>
-        <!-- Sidebar menu-->
-        <div class="app-sidebar_overlay" data-toggle="sidebar"></div>
-        <aside class="app-sidebar">          
-          <ul class="app-menu">
-            <li><a class="app-menu__item {% block home %}{% endblock %}" href="{% url 'home' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
-            <li><a class="app-menu__item {% block usuario %}{% endblock %}" href="{% url 'usuario:usuario_list' %}"><i class="app-menu__icon fas fa-users"></i><span class="app-menu__label">Usuários</span></a></li>
-            <li><a class="app-menu__item {% block evento %}{% endblock %}" href="#"><i class="app-menu__icon fas fa-theater-masks"></i><span class="app-menu__label">Evento</span></a></li>
-            <li><a class="app-menu__item {% block despesa %}{% endblock %}" href="#"><i class="app-menu__icon fas fa-money"></i><span class="app-menu__label">Despesas</span></a></li>
-            <hr>
-            <li><a class="app-menu__item {% block funcionario %}{% endblock %}" href="{% url 'funcionario:funcionario_list' %}"><i class="app-menu__icon far fa-id-badge"></i><span class="app-menu__label">Funcionários</span></a></li>
-            <li><a class="app-menu__item {% block equipamento %}{% endblock %}" href="{% url 'equipamento:equipamento_list' %}"><i class="app-menu__icon fas fa-toolbox"></i><span class="app-menu__label">Equipamentos</span></a></li>
-            <hr>
-            <li><a class="app-menu__item {% block sobre %}{% endblock %}" href="{% url 'sobre' %}"><i class="app-menu__icon fa fa-book"></i> <span class="app-menu__label">Sobre</span></a></li>
-          </ul>
-        </aside>
-    
-        <main class="app-content">
-          <div class="app-title">
-            <div>
-              <h1> {% block titulo %}{% endblock %} </h1>
-            </div>
-            <ul class="app-breadcrumb breadcrumb">              
-              {% block breadcrumb %}{% endblock %}
-            </ul>
-          </div>
 
-          {% block content %}{% endblock %} 
-        </main>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar_overlay" data-toggle="sidebar"></div>
+    <aside class="app-sidebar">          
+      <ul class="app-menu">
+        <li><a class="app-menu__item {% block home %}{% endblock %}" href="{% url 'home' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li><a class="app-menu__item {% block usuario %}{% endblock %}" href="{% url 'usuario:usuario_list' %}"><i class="app-menu__icon fas fa-users"></i><span class="app-menu__label">Usuários</span></a></li>
+        <li><a class="app-menu__item {% block evento %}{% endblock %}" href="#"><i class="app-menu__icon fas fa-theater-masks"></i><span class="app-menu__label">Evento</span></a></li>
+        <li><a class="app-menu__item {% block despesa %}{% endblock %}" href="#"><i class="app-menu__icon fas fa-money"></i><span class="app-menu__label">Despesas</span></a></li>
+        <hr>
+        <li><a class="app-menu__item {% block funcionario %}{% endblock %}" href="{% url 'funcionario:funcionario_list' %}"><i class="app-menu__icon far fa-id-badge"></i><span class="app-menu__label">Funcionários</span></a></li>
+        <li><a class="app-menu__item {% block equipamento %}{% endblock %}" href="{% url 'equipamento:equipamento_list' %}"><i class="app-menu__icon fas fa-toolbox"></i><span class="app-menu__label">Equipamentos</span></a></li>
+        <hr>
+        <li><a class="app-menu__item {% block sobre %}{% endblock %}" href="{% url 'sobre' %}"><i class="app-menu__icon fa fa-book"></i> <span class="app-menu__label">Sobre</span></a></li>
+      </ul>
+    </aside>
+      
+    <main class="app-content">
+      <div class="app-title">
+        <div>
+            <h1> {% block titulo %}{% endblock %} </h1>
+          </div>
+          <ul class="app-breadcrumb breadcrumb">              
+          {% block breadcrumb %}{% endblock %}
+          </ul>
+        </div>
+
+        {% block content %}{% endblock %} 
+    </main>
 
     <script src="{% static 'node_modules/jquery/dist/jquery.js' %}"></script>
     <script src="{% static 'node_modules/popper.js/dist/popper.js' %}"></script>
     <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.js' %}"></script>
     <script src="{% static 'js/plugins/pace.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
-
     <!-- Data table plugin-->
     <script type="text/javascript" src="{% static 'js/plugins/jquery.dataTables.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/plugins/dataTables.bootstrap.min.js' %}"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
-</body>
-
+  </body>
 </html>
