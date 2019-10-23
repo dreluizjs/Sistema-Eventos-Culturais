@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'usuario',
     'funcionario',
     'equipamento',
+    'evento',
 
 ]
 

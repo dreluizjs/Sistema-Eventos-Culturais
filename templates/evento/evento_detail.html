@@ -1,0 +1,31 @@
+{%extends 'base.html'%} 
+
+{% block title %} SGEC Admin| Evento {% endblock %} 
+
+{% block evento %}active{% endblock %} 
+
+{% block titulo %} Informações de Evento{% endblock %}
+
+{% block breadcrumb %} 
+<li class="breadcrumb-item"><i class="far fa-id-badge fa-lg"></i></li>
+<li class="breadcrumb-item"><a href="#">Eventos</a></li>
+<li class="breadcrumb-item"><a href="#">Informações de Evento</a></li>
+{% endblock %} 
+
+{% block content %}
+
+<div class="tile mb-4">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2 class="mb-3 line-head" id="buttons">{{object.nome}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      
+    </div>
+  </div>
+{% endblock %}
+
+{% block script %} {% endblock %}

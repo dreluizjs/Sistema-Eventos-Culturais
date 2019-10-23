@@ -54,7 +54,7 @@
       <ul class="app-menu">
         <li><a class="app-menu__item {% block home %}{% endblock %}" href="{% url 'home' %}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
         <li><a class="app-menu__item {% block usuario %}{% endblock %}" href="{% url 'usuario:usuario_list' %}"><i class="app-menu__icon fas fa-users"></i><span class="app-menu__label">Usuários</span></a></li>
-        <li><a class="app-menu__item {% block evento %}{% endblock %}" href="#"><i class="app-menu__icon fas fa-theater-masks"></i><span class="app-menu__label">Evento</span></a></li>
+        <li><a class="app-menu__item {% block evento %}{% endblock %}" href="{% url 'evento:evento_list' %}"><i class="app-menu__icon fas fa-theater-masks"></i><span class="app-menu__label">Evento</span></a></li>
         <li><a class="app-menu__item {% block despesa %}{% endblock %}" href="#"><i class="app-menu__icon fas fa-money"></i><span class="app-menu__label">Despesas</span></a></li>
         <hr>
         <li><a class="app-menu__item {% block funcionario %}{% endblock %}" href="{% url 'funcionario:funcionario_list' %}"><i class="app-menu__icon far fa-id-badge"></i><span class="app-menu__label">Funcionários</span></a></li>
