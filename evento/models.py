@@ -25,3 +25,32 @@ class Evento(models.Model):
 
     #def get_absolute_url(self):
      #   return "/evento/{slug}".format(slug=self.slug)
+    
+    def orcamento_left(self):
+        despesa_list = Despesa.objects.filter(evento=self)
+        total_despesa_montante = 0
+        for despesa in despesa_list:
+            total_despesa_montante += despesa.montante
+        
+        return self.orcamento - total_despesa_montante
+
+    def total_montante(self):
+        despesa_list = Despesa.objects.filter(evento=self)
+        total = 0
+        for despesa in despesa_list:
+            total += montante
+        
+        return self.total
+  
+    def total_transacao(self):
+        despesa_list = Despesa.objects.filter(evento=self)
+        return len(despesa_list)
+
+
+class Despesa(models.Model):
+
+    evento          = models.ForeignKey(Evento, on_delete=models.CASCADE, related_name='despesas')
+    titulo          = models.CharField(max_length=25, null=True, blank=True)
+    montante        = models.DecimalField(max_digits=8, decimal_places=2)
+    descricao       = models.TextField(null=True, blank=True)
+    datalancamento  = models.DateTimeField(auto_now_add=True)

@@ -2,30 +2,15 @@
 
 {% block title %} SGEC Admin| Funcionarios {% endblock %} 
 
-{% block funcionario %}active{% endblock %} 
+{% block despesa %}active{% endblock %} 
 
-{% block titulo %} Funcionários{% endblock %}
+{% block titulo %} Despesas{% endblock %}
 
 {% block breadcrumb %} 
-<li class="breadcrumb-item"><a href="#">Funcionários</a></li>
+<li class="breadcrumb-item"><a href="#">Despesas</a></li>
 {% endblock %} 
 
 {% block content %}
-
-{% if messages %}
-<div class="col-lg-4">
-  <div class="bs-component">
-    <div class="alert alert-dismissible alert-success">
-        {% for message in messages %}        
-          {{ message }}
-        {% endfor %}      
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  </div>
-</div>
-{% endif %}
 
 <div class="row">
   <div class="col-md-12">
@@ -35,22 +20,22 @@
           <table class="table table-hover table-bordered" id="sampleTable">
             <thead>
               <tr>
-                <th>ID</th>
-                  <th>Nome</th>
-                  <th>Email</th>
-                  <th>Telefone</th>
-                  <th>Cargo</th>
-                  <th>Ações</th>
+                <th>Titulo</th>
+                <th>Evento</th>
+                <th>Data Lançamento</th>
+                <th>Valor</th>
+                <th>Descrição</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
               {% for object in object_list %}
               <tr>
-                <td>{{object.id}}</td>
-                <td><a href="{{object.get_absolute_url}}">{{object.nome}}</a></td>
-                <td>{{object.email}}</td>
-                <td>{{object.telefone}}</td>
-                <td>{{object.cargo}}</td>
+                <td><a href="{{object.get_absolute_url}}">{{object.titulo}}</a></td>
+                <td>{{object.evento.nome}}</td>
+                <td>{{object.datalancamento}}</td>
+                <td>{{object.montante}}</td>
+                <td>{{object.descricao}}</td>
                 <td>
                   <a href="{{object.get_absolute_url}}" data-toggle="tooltip" title="Visualizar"><i class="fa fa-fw fa-eye"></i></a>
                   <a href="{{object.get_absolute_url}}editar/" data-toggle="tooltip" title="Editar"><i class="fa fa-fw fa-edit"></i></a>

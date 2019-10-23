@@ -26,7 +26,7 @@ def usuario_create(request):
             account = authenticate(email=email, password=raw_password)
             #login(request, account)
             messages.success(request,f'Conta criada para {username}!')            
-            return redirect('/usuario/')
+            return redirect('/usuarios/')
     else:
         form = UsuarioForm()
     return render (request, 'usuario/usuario_create.html', {'form':form})
@@ -45,7 +45,7 @@ def usuario_delete(request, pk):
 
     messages.info(request, 'Usuario deletado com sucesso!')
 
-    return redirect('/usuario/')
+    return redirect('/usuarios/')
     
 class UsuarioUpdate(UpdateView):
     model = Usuario

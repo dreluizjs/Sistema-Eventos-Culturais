@@ -78,6 +78,8 @@ TEMPLATES = [
     },
 ]
 
+AUTH_USER_MODEL = 'usuario.Usuario'
+
 WSGI_APPLICATION = 'siseventos.wsgi.application'
 
 
