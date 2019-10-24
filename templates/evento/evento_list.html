@@ -26,6 +26,9 @@
   </div>
 </div>
 {% endif %}
+<div class="tile-title-w-btn">
+    <p><a class="btn btn-primary icon-btn" href="{% url 'evento:evento_create' %}"><i class="fa fa-plus"></i>Cadastrar Evento</a></p>
+</div>
 
 <div class="row">
   <div class="col-md-12">
@@ -58,6 +61,7 @@
                   {% endif %}
               </td>
                 <td>
+                    <a href="{{object.get_absolute_url}}" data-toggle="tooltip" title="Despesa"><i class="fa fa-fw fa-money"></i></a>
                   <a href="{{object.get_absolute_url}}" data-toggle="tooltip" title="Visualizar"><i class="fa fa-fw fa-eye"></i></a>
                   <a href="{{object.get_absolute_url}}editar/" data-toggle="tooltip" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
                   <a href="{{object.get_absolute_url}}deletar/" data-toggle="tooltip" title="Deletar"><i class="fa fa-fw fa-trash"></i></a>
