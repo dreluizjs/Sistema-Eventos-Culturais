@@ -12,6 +12,8 @@
 
 {% block content %}
 
+{% include 'funcionario/funcionario_delete.html' %}
+
 {% if messages %}
 <div class="col-lg-4">
   <div class="bs-component">
@@ -67,6 +69,12 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-func">
+  <div class="modal-dialog">
+      <div class="modal-content"></div>
   </div>
 </div>
 

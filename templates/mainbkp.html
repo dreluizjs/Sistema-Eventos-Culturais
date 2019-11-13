@@ -1,0 +1,122 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'node_modules/@fortawesome/fontawesome-free/css/all.css' %}">
+    <!-- App Style -->
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="main-wrapper">
+        <!-- Navbar -->
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand main-navbar">
+          <form class="form-inline mr-auto">
+            <ul class="navbar-nav mr-3">
+              <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
+              <li><a href="#" data-toggle="search" class="nav-link nav-link-lg d-sm-none"><i
+                    class="fas fa-search"></i></a></li>
+            </ul>
+            <div class="search-element">
+              <input class="form-control" type="search" placeholder="Procurar" aria-label="Search" data-width="250">
+              <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+            </div>
+          </form>
+          <ul class="navbar-nav navbar-right">
+            <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+                class="nav-link nav-link-lg message-toggle"><i class="far fa-envelope"></i></a>
+              <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                <div class="dropdown-header">Mensagens
+  
+                </div>
+              </div>
+            </li>
+            <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+                class="nav-link notification-toggle nav-link-lg"><i class="far fa-bell"></i></a>
+              <div class="dropdown-menu dropdown-list dropdown-menu-right">
+                <div class="dropdown-header">Notificações</div>
+              </div>
+            </li>
+            <li class="dropdown"><a href="#" data-toggle="dropdown"
+                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                <img alt="image" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" class="rounded-circle mr-1">
+                <div class="d-sm-none d-lg-inline-block">{{user.username}}</div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a href="#" class="dropdown-item has-icon">
+                  <i class="far fa-user"></i> Perfil
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item has-icon text-danger">
+                  <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+  
+        <!-- Sidebar -->
+        <div class="main-sidebar">
+          <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+              <a href="index.html">SGEC Admin</a>
+            </div>
+            <div class="sidebar-brand sidebar-brand-sm">
+              <a href="index.html">SGEC</a>
+            </div>
+            <ul class="sidebar-menu">             
+              <li class="{% block home %}{% endblock %}"><a class="nav-link" href="#"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+              <li class="{% block usuario %}{% endblock %}"><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Usuários</span></a></li>
+              <li class="{% block evento %}{% endblock %}"><a class="nav-link" href="#"><i class="fas fa-theater-masks"></i> <span>Eventos</span></a></li>
+              <li class="{% block despesa %}{% endblock %}"><a class="nav-link" href="#"><i class="fas fa-money-bill"></i> <span>Despesas</span></a></li>
+              <li class="{% block funcionario %}{% endblock %}"><a class="nav-link" href="#"><i class="far fa-id-badge"></i> <span>Funcionários</span></a></li>
+              <li class="{% block equipamento %}{% endblock %}"><a class="nav-link" href="#"><i class="fas fa-toolbox"></i> <span>Equipamentos</span></a></li>
+              <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-book"></i> <span>Documentação</span></a>
+                <ul class="dropdown-menu">
+                  <li><a class="nav-link" href="#">Sobre</a></li>
+                  <li><a class="nav-link" href="#">Tecnologias</a></li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
+        </div>
+  
+        <!-- Main Content -->
+        <div class="main-content">
+          <section class="section">
+            <div class="section-header">
+              <h1>Blank Page</h1>
+            </div>
+  
+            <div class="section-body">
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  
+    <!-- General JS Scripts -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="{% static 'js/admin.js' %}"></script>
+  <!-- JS Libraies -->
+
+  <!-- Template JS File -->
+  <script src="{% static 'js/scripts.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
+  </body>
+  
+</html>
