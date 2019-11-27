@@ -25,7 +25,7 @@ def usuario_create(request):
             raw_password = form.cleaned_data.get('password1')
             account = authenticate(email=email, password=raw_password)
             #login(request, account)
-            messages.success(request,f'Conta criada para {username}!')            
+            messages.success(request,f'Conta criada para {username}!!')            
             return redirect('/usuarios/')
     else:
         form = UsuarioForm()
@@ -42,9 +42,7 @@ def usuario_detail(request, pk):
 def usuario_delete(request, pk):
     usuario = get_object_or_404 (Usuario, pk=pk)
     usuario.delete()
-
     messages.info(request, 'Usuario deletado com sucesso!')
-
     return redirect('/usuarios/')
     
 class UsuarioUpdate(UpdateView):

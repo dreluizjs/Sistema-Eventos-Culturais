@@ -1,0 +1,101 @@
+{%extends 'main.html'%}
+
+{% block title %}Eventos &mdash; SGEC{% endblock %}
+
+{% block evento %}active{% endblock %}
+
+{% block titulo %} Despesas de Evento{% endblock %}
+
+{% block section %}
+<h2 class="section-title">Eventos</h2>
+<p class="section-lead">Despesas de Evento</p>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="card card-statistic-2">
+      <div class="card-icon shadow-primary bg-primary">
+        <i class="fas fa-wallet"></i>
+      </div>
+      <div class="card-wrap">
+        <div class="card-header">
+          <h4>Orçamento</h4>
+        </div>
+        <div class="card-body">
+          R$: {{ evento.orcamento }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="card card-statistic-2">
+      <div class="card-icon shadow-primary bg-primary">
+        <i class="fas fa-dollar-sign"></i>
+      </div>
+      <div class="card-wrap">
+        <div class="card-header">
+          <h4>Saldo Restante</h4>
+        </div>
+        <div class="card-body">
+          R$: {{ evento.orcamento_left }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-12">
+    <div class="card card-statistic-2">
+      <div class="card-icon shadow-primary bg-primary">
+        <i class="fas fa-arrow-down"></i>
+      </div>
+      <div class="card-wrap">
+        <div class="card-header">
+          <h4>Lançamentos</h4>
+        </div>
+        <div class="card-body">
+          R$: {{ evento.total_transacao }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Despesas do Evento</h4>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered" id="table-2">
+            <thead>
+              <tr>
+                <th scope="col">Titulo</th>
+                <th scope="col">Data de Lançamento</th>
+                <th scope="col">Descrição</th>
+                <th scope="col" class="text-right">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for despesa in despesa_list %}
+              <tr>
+                <td>{{despesa.titulo}}</td>
+                <td>{{despesa.datalancamento}}</td>
+                <td>{{despesa.descricao}}</td>
+                <td class="text-right">R$ {{despesa.montante}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %} {% endblock %}

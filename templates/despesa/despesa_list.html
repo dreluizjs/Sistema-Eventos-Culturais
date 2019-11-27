@@ -1,27 +1,31 @@
-{%extends 'base.html'%} 
+{%extends 'main.html'%}
 
-{% block title %} SGEC Admin| Funcionarios {% endblock %} 
+{% block title %} SGEC Admin|Despesas {% endblock %}
 
-{% block despesa %}active{% endblock %} 
+{% block despesa %}active{% endblock %}
 
 {% block titulo %} Despesas{% endblock %}
 
-{% block breadcrumb %} 
-<li class="breadcrumb-item"><a href="#">Despesas</a></li>
-{% endblock %} 
+{% block section %}
+<h2 class="section-title">Despesas</h2>
+<p class="section-lead">Tabela de Despesas</p>
+{% endblock %}
 
 {% block content %}
 
 <div class="tile-title-w-btn">
-    <p><a class="btn btn-primary icon-btn" href=""><i class="fa fa-plus"></i>Lançar Despesa</a></p>
+  <p><a class="btn btn-primary icon-btn" href="{% url 'evento:despesa_create' %}"><i class="fa fa-plus"></i>Lançar Despesa</a></p>
 </div>
 
 <div class="row">
-  <div class="col-md-12">
-    <div class="tile">
-      <div class="tile-body">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Tabela de Despesas</h4>
+      </div>
+      <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-hover table-bordered" id="sampleTable">
+          <table class="table table-hover table-bordered" id="table-2">
             <thead>
               <tr>
                 <th>Titulo</th>
@@ -36,17 +40,20 @@
               {% for object in object_list %}
               <tr>
                 <td><a href="{{object.get_absolute_url}}">{{object.titulo}}</a></td>
-                <td>{{object.evento.nome}}</td>
+                <td><a href="{{object.evento.get_absolute_url}}">{{object.evento.nome}}</td>
                 <td>{{object.datalancamento}}</td>
                 <td>{{object.montante}}</td>
                 <td>{{object.descricao}}</td>
                 <td>
-                  <a href="{{object.get_absolute_url}}" data-toggle="tooltip" title="Visualizar"><i class="fa fa-fw fa-eye"></i></a>
-                  <a href="{{object.get_absolute_url}}editar/" data-toggle="tooltip" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
-                  <a href="{{object.get_absolute_url}}deletar/" data-toggle="tooltip" title="Deletar"><i class="fa fa-fw fa-trash"></i></a>
+                  <a href="{{object.get_absolute_url}}" data-toggle="tooltip" title="Visualizar"><i
+                      class="fa fa-fw fa-eye"></i></a>
+                  <a href="{{object.get_absolute_url}}editar/" data-toggle="tooltip" title="Editar"><i
+                      class="fa fa-fw fa-edit"></i></a>
+                  <a href="{{object.get_absolute_url}}deletar/" data-toggle="tooltip" title="Deletar"><i
+                      class="fa fa-fw fa-trash"></i></a>
                 </td>
               </tr>
-              {% endfor %}              
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -55,7 +62,7 @@
   </div>
 </div>
 
-{% endblock %} 
+{% endblock %}
 
 
 {% block script %} {% endblock %}

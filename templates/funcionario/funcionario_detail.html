@@ -1,32 +1,39 @@
-{%extends 'base.html'%} 
+{%extends 'main.html'%}
 
-{% block title %} SGEC Admin| Funcionário {% endblock %} 
+{% block title %} SGEC Admin| Funcionário {% endblock %}
 
-{% block funcionario %}active{% endblock %} 
+{% block funcionario %}active{% endblock %}
 
 {% block titulo %} Informações de Funcionário{% endblock %}
 
-{% block breadcrumb %} 
-<li class="breadcrumb-item"><i class="far fa-id-badge fa-lg"></i></li>
-<li class="breadcrumb-item"><a href="#">Funcionários</a></li>
-<li class="breadcrumb-item"><a href="#">Informações de Funcionário</a></li>
-{% endblock %} 
+{% block section %}
+<h2 class="section-title">Funcionários</h2>
+<p class="section-lead">Informações de Funcionário</p>
+{% endblock %}
 
 {% block content %}
 
-<div class="tile mb-4">
-    <div class="page-header">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="mb-3 line-head" id="buttons">{{object.nome}}</h2>
+<div class="row">
+  <div class="col-12">
+    <div class="card profile-widget">
+      <div class="profile-widget-header">
+        <img alt="image" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
+          class="rounded-circle profile-widget-picture">
+      </div>
+      <div class="profile-widget-description pb-0">
+        <div class="profile-widget-name">{{object.nome}}<div class="text-muted d-inline font-weight-normal">
+            <div class="slash"></div> {{object.cargo}}
+          </div>
         </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
       </div>
     </div>
-    <div class="row">
-      
-    </div>
   </div>
-{% endblock %} 
+</div>
+{% endblock %}
 
 
 {% block script %} {% endblock %}

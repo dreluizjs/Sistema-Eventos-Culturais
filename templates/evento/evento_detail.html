@@ -1,31 +1,60 @@
-{%extends 'base.html'%} 
+{%extends 'main.html'%}
 
-{% block title %} SGEC Admin| Evento {% endblock %} 
+{% block title %}Eventos &mdash; SGEC{% endblock %}
 
-{% block evento %}active{% endblock %} 
+{% block evento %}active{% endblock %}
 
 {% block titulo %} Informações de Evento{% endblock %}
 
-{% block breadcrumb %} 
-<li class="breadcrumb-item"><i class="far fa-id-badge fa-lg"></i></li>
-<li class="breadcrumb-item"><a href="#">Eventos</a></li>
-<li class="breadcrumb-item"><a href="#">Informações de Evento</a></li>
-{% endblock %} 
+{% block section %}
+<h2 class="section-title">Eventos</h2>
+<p class="section-lead">Informações de Evento</p>
+{% endblock %}
 
 {% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>{{object.nome}}</h4>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-4">
+            <img class="card-img-top " width="400" height="200" src="{{evento.banner.url}}" alt="{{ evento.nome}}">
+          </div>
+          <div class="col-12 col-sm-12 col-md-8">
+            <div class="card-body">
 
-<div class="tile mb-4">
-    <div class="page-header">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="mb-3 line-head" id="buttons">{{object.nome}}</h2>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Nome: {{object.nome}}</li>
+                <li class="list-group-item">Organizador: {{object.organizador}}</li>
+                <li class="list-group-item">Descrição: {{object.descricao}}</li>
+                <li class="list-group-item">Orçamento: {{object.orcamento}}</li>
+                <li class="list-group-item">Data: {{object.data}}</li>
+                <li class="list-group-item">Hora: {{object.hora}}</li>
+                <li class="list-group-item">Status:
+                  {% if object.status == True %}
+                  <i class="fas fa-check text-success"></i> Ativo
+                  {% else %}
+                  <i class="fas fa-times text-danger"></i> Desativado
+                  {% endif %}
+                </li>
+                <li class="list-group-item">Ultimo Update: {{object.update}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="text-md-right">
+          <a href="{{object.get_absolute_url}}editar/" class="btn btn-info"><i class="fas fa-edit"></i> Editar</a>
+          <a href="{{object.get_absolute_url}}despesas/" class="btn btn-primary"><i class="fas fa-money-bill"></i> Despesas</a>
+          <a href="{{object.get_absolute_url}}deletar/" class="btn btn-danger"><i class="fas fa-trash"></i> Excluir</a>
         </div>
       </div>
     </div>
-    <div class="row">
-      
-    </div>
   </div>
+</div>
 {% endblock %}
 
 {% block script %} {% endblock %}

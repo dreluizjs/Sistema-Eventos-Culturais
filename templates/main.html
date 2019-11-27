@@ -1,18 +1,18 @@
 {% load static %}
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{% static 'node_modules/@fortawesome/fontawesome-free/css/all.css' %}">
-  <!-- App Style -->
-  <link rel="stylesheet" href="{% static '/css/style.css' %}">
-  <link rel="stylesheet" href="{% static '/css/datatables.min.css' %}">
-  <title>{% block title %} {% endblock %}</title>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Blank Page &mdash; SGEC</title>
+
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{% static '/css/style2.css' %}">
+  <link rel="stylesheet" href="{% static '/css/components.css' %}">
 </head>
 
 <body>
@@ -33,20 +33,6 @@
           </div>
         </form>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-              class="nav-link nav-link-lg message-toggle"><i class="far fa-envelope"></i></a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right">
-              <div class="dropdown-header">Mensagens
-
-              </div>
-            </div>
-          </li>
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
-              class="nav-link notification-toggle nav-link-lg"><i class="far fa-bell"></i></a>
-            <div class="dropdown-menu dropdown-list dropdown-menu-right">
-              <div class="dropdown-header">Notificações</div>
-            </div>
-          </li>
           <li class="dropdown"><a href="#" data-toggle="dropdown"
               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
               <img alt="image" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
@@ -54,9 +40,10 @@
               <div class="d-sm-none d-lg-inline-block">{{user.username}}</div>
             </a>
             <div class="dropdown-menu dropdown-menu-right">
-              <a href="#" class="dropdown-item has-icon">
+              <div class="dropdown-title">Logged in 5 min ago</div>
+              <a href="features-profile.html" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Perfil
-              </a>
+              </a>            
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -105,6 +92,7 @@
       <div class="main-content">
         <section class="section">
           <div class="section-body">
+            {% block section %}{% endblock %}
             {% block content %}{% endblock %}
           </div>
         </section>
@@ -119,49 +107,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="{% static 'js/admin.js' %}"></script>
+
   <!-- JS Libraies -->
 
   <!-- Template JS File -->
   <script src="{% static 'js/scripts.js' %}"></script>
   <script src="{% static 'js/custom.js' %}"></script>
   <!-- Page Specific JS File -->
-  <script src="{% static 'js/table.js' %}"></script>
-  <script src="{% static 'js/datatable.js' %}"></script>
-  <script src="{% static 'js/datatables.min.js' %}"></script>
-  <script src="{% static 'js/dataTables.bootstrap4.min.js' %}"></script>
-
-  <!-- Page-Level Scripts -->
-  <script>
-    $(document).ready(function () {
-      $('.dataTables-example').DataTable({
-        pageLength: 25,
-        responsive: true,
-        dom: '<"html5buttons"B>lTfgitp',
-        buttons: [
-          { extend: 'copy' },
-          { extend: 'csv' },
-          { extend: 'excel', title: 'ExampleFile' },
-          { extend: 'pdf', title: 'ExampleFile' },
-
-          {
-            extend: 'print',
-            customize: function (win) {
-              $(win.document.body).addClass('white-bg');
-              $(win.document.body).css('font-size', '10px');
-
-              $(win.document.body).find('table')
-                .addClass('compact')
-                .css('font-size', 'inherit');
-            }
-          }
-        ]
-
-      });
-
-    });
-
-  </script>
-
 </body>
 
 </html>

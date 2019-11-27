@@ -1,14 +1,15 @@
-{%extends 'base.html'%} 
+{%extends 'main.html'%}
 
-{% block title %} SGEC Admin| Equipamentos {% endblock %} 
+{% block title %} SGEC Admin| Equipamentos {% endblock %}
 
-{% block equipamento %}active{% endblock %} 
+{% block equipamento %}active{% endblock %}
 
 {% block titulo %} Equipamentos{% endblock %}
 
-{% block breadcrumb %} 
-<li class="breadcrumb-item"><a href="#">Equipamentos</a></li>
-{% endblock %} 
+{% block section %}
+<h2 class="section-title">Equipamentos</h2>
+<p class="section-lead">Tabela de Equipamentos Cadastrados</p>
+{% endblock %}
 
 {% block content %}
 
@@ -16,11 +17,11 @@
 <div class="col-lg-4">
   <div class="bs-component">
     <div class="alert alert-dismissible alert-success">
-        {% for message in messages %}        
-          {{ message }}
-        {% endfor %}      
+      {% for message in messages %}
+      {{ message }}
+      {% endfor %}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+        <span aria-hidden="true">&times;</span>
       </button>
     </div>
   </div>
@@ -28,15 +29,19 @@
 {% endif %}
 
 <div class="tile-title-w-btn">
-    <p><a class="btn btn-primary icon-btn" href="{% url 'equipamento:equipamento_create' %}"><i class="fa fa-plus"></i>Cadastrar Equipamento</a></p>
+  <p><a class="btn btn-primary icon-btn" href="{% url 'equipamento:equipamento_create' %}"><i
+        class="fa fa-plus"></i>Cadastrar Equipamento</a></p>
 </div>
 
 <div class="row">
-  <div class="col-md-12">
-    <div class="tile">
-      <div class="tile-body">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Tabela de Usuários</h4>
+      </div>
+      <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-hover table-bordered" id="sampleTable">
+          <table class="table table-hover table-bordered" id="table-2">
             <thead>
               <tr>
                 <th>ID</th>
@@ -56,18 +61,21 @@
                 <td>{{object.valor}}</td>
                 <td>
                   {% if object.ativo == True %}
-                      <i class="fas fa-check text-success"></i> Ativo
+                  <i class="fas fa-check text-success"></i> Ativo
                   {% else %}
-                      <i class="fas fa-times text-danger"></i> Desativado
+                  <i class="fas fa-times text-danger"></i> Desativado
                   {% endif %}
-              </td>
+                </td>
                 <td>
-                  <a href="{{object.get_absolute_url}}" data-toggle="tooltip" title="Visualizar"><i class="fa fa-fw fa-eye"></i></a>
-                  <a href="{{object.get_absolute_url}}editar/" data-toggle="tooltip" title="Editar"><i class="fa fa-fw fa-edit"></i></a>
-                  <a href="{{object.get_absolute_url}}deletar/" data-toggle="tooltip" title="Deletar"><i class="fa fa-fw fa-trash"></i></a>
+                  <a href="{{object.get_absolute_url}}" data-toggle="tooltip" title="Visualizar"><i
+                      class="fa fa-fw fa-eye"></i></a>
+                  <a href="{{object.get_absolute_url}}editar/" data-toggle="tooltip" title="Editar"><i
+                      class="fa fa-fw fa-edit"></i></a>
+                  <a href="{{object.get_absolute_url}}deletar/" data-toggle="tooltip" title="Deletar"><i
+                      class="fa fa-fw fa-trash"></i></a>
                 </td>
               </tr>
-              {% endfor %}              
+              {% endfor %}
             </tbody>
           </table>
         </div>
@@ -76,7 +84,8 @@
   </div>
 </div>
 
-{% endblock %} 
+
+{% endblock %}
 
 
 {% block script %} {% endblock %}

@@ -1,43 +1,41 @@
-{%extends 'base.html'%} 
+{%extends 'main.html'%}
 
 {% load crispy_forms_tags %}
 
-{% block title %} SGEC Admin| Cadastro de Usuário {% endblock %} 
+{% block title %} SGEC Admin| Cadastro de Despesa {% endblock %}
 
-{% block usuario %}active{% endblock %} 
+{% block despesa %}active{% endblock %}
 
-{% block titulo %} Cadastro de Usuário{% endblock %}
+{% block titulo %} Cadastro de Despesa{% endblock %}
 
-{% block breadcrumb %} 
-<li class="breadcrumb-item"><i class="far fa-id-badge fa-lg"></i></li>
-<li class="breadcrumb-item"><a href="#">Usuários</a></li>
-<li class="breadcrumb-item"><a href="#">Cadastro de Usuário</a></li>
-{% endblock %} 
+{% block section %}
+<h2 class="section-title">Despesas</h2>
+<p class="section-lead">Cadastramento de Despesa</p>
+{% endblock %}
 
 {% block content %}
-
 <div class="row">
-  <div class="col-md-12">
-    <div class="tile">
-      <div class="row">
-        <div class="col-lg-6">
-          <form role="form" method="POST" novalidate>
-            {% csrf_token %} 
-            <div class="form-group">
-              {{ form|crispy }} 
-            </div>
-            <div class="tile-footer">
-              <button class="btn btn-primary" type="submit">Cadastrar</button>
-              <button class="btn btn-info" type="reset">Resetar</button>
-              <button class="btn btn-danger" type="cancel">Cancelar</button>
-            </div>
-          </form>
-        </div>        
-      </div>     
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h4>Cadastrar Despesa</h4>
+      </div>
+      <div class="card-body">
+        <form role="form" method="POST" novalidate>
+          {% csrf_token %}
+          <div class="form-group">
+            {{ form|crispy }}
+          </div>
+          <div class="tile-footer">
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+            <button class="btn btn-info" type="reset">Resetar</button>
+            <button class="btn btn-danger" type="cancel">Cancelar</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>
-{% endblock %} 
-
+{% endblock %}
 
 {% block script %} {% endblock %}

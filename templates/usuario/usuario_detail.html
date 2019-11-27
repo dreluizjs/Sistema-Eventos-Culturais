@@ -1,31 +1,46 @@
-{%extends 'base.html'%} 
+{%extends 'main.html'%}
 
-{% block title %} SGEC Admin| Usuário {% endblock %} 
+{% block title %} SGEC Admin| Usuário {% endblock %}
 
-{% block usuario %}active{% endblock %} 
+{% block usuario %}active{% endblock %}
 
 {% block titulo %} Informações de Usuário{% endblock %}
 
-{% block breadcrumb %} 
-<li class="breadcrumb-item"><i class="far fa-id-badge fa-lg"></i></li>
-<li class="breadcrumb-item"><a href="#">Usuários</a></li>
-<li class="breadcrumb-item"><a href="#">Informações de Usuário</a></li>
-{% endblock %} 
+{% block section %}
+<h2 class="section-title">Usuários</h2>
+<p class="section-lead">Informações de Usuário</p>
+{% endblock %}
 
 {% block content %}
+<div class="row">
+  <div class="col-12">
+    <div class="card author-box">
+      <div class="card-body">
+        <div class="author-box-left">
+          <img alt="image" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg"
+            class="rounded-circle author-box-picture">
+          <div class="clearfix"></div>
+        </div>
+        <div class="author-box-details">
+          <div class="author-box-name">
+            <a href="#">{{object.username}}</a>
+          </div>
+          <div class="author-box-job">{{object.username}}</div>
+          <div class="author-box-description">
+            <p>{{object.email}}</p>
+            <p>{{object.date_joined}}</p>
+          </div>
 
-<div class="tile mb-4">
-    <div class="page-header">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2 class="mb-3 line-head" id="buttons">{{object.username}}</h2>
+          <div class="w-100 d-sm-none"></div>
+          <div class="float-right mt-sm-0 mt-3">
+            <button class="btn btn-primary" type="submit">Editar</button>
+            <button class="btn btn-info" type="reset">Voltar</button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      
-    </div>
   </div>
+</div>
 {% endblock %}
 
 {% block script %} {% endblock %}
