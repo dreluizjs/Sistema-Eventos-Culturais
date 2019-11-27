@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
   <!-- Template CSS -->
-  <link rel="stylesheet" href="{% static '/css/style2.css' %}">
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
   <link rel="stylesheet" href="{% static '/css/components.css' %}">
 </head>
 
@@ -43,7 +43,7 @@
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="features-profile.html" class="dropdown-item has-icon">
                 <i class="far fa-user"></i> Perfil
-              </a>            
+              </a>
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item has-icon text-danger">
                 <i class="fas fa-sign-out-alt"></i> Logout
@@ -63,20 +63,47 @@
             <a href="{% url 'home' %}">SGEC</a>
           </div>
           <ul class="sidebar-menu">
+            <li class="menu-header">Gerencia</li>
+            <!-- Dashboard -->
             <li class="{% block home %}{% endblock %}"><a class="nav-link" href="{% url 'home' %}"><i
                   class="fas fa-home"></i> <span>Dashboard</span></a></li>
-            <li class="{% block usuario %}{% endblock %}"><a class="nav-link" href="{% url 'usuario:usuario_list' %}"><i
-                  class="fas fa-users"></i> <span>Usuários</span></a></li>
-            <li class="{% block evento %}{% endblock %}"><a class="nav-link" href="{% url 'evento:evento_list' %}"><i
-                  class="fas fa-theater-masks"></i> <span>Eventos</span></a></li>
+            <!-- Usuários -->
+            <li class="{% block usuario %}{% endblock %}">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-users"></i> <span>Usuários</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{% url 'usuario:usuario_list' %}">Lista de Usuários</a></li>
+                <li><a class="nav-link" href="{% url 'usuario:usuario_create' %}">Cadastrar Usuários</a></li>
+              </ul>
+            </li>
+            <!-- Eventos -->
+            <li class="{% block evento %}{% endblock %}">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-theater-masks"></i> <span>Eventos</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{% url 'evento:evento_list' %}">Lista de Eventos</a></li>
+                <li><a class="nav-link" href="{% url 'evento:evento_create' %}">Cadastrar Evento</a></li>
+              </ul>
+            </li>
+            <!-- Despesas -->
             <li class="{% block despesa %}{% endblock %}"><a class="nav-link" href="{% url 'evento:despesa_list' %}"><i
                   class="fas fa-money-bill"></i> <span>Despesas</span></a></li>
-            <li class="{% block funcionario %}{% endblock %}"><a class="nav-link"
-                href="{% url 'funcionario:funcionario_list' %}"><i class="far fa-id-badge"></i>
-                <span>Funcionários</span></a></li>
-            <li class="{% block equipamento %}{% endblock %}"><a class="nav-link"
-                href="{% url 'equipamento:equipamento_list' %}"><i class="fas fa-toolbox"></i>
-                <span>Equipamentos</span></a></li>
+            <li class="menu-header">Controle</li>
+            <!-- Funcionários -->
+            <li class="{% block funcionario %}{% endblock %}">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-id-badge"></i> <span>Funcionários</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{% url 'funcionario:funcionario_list' %}">Lista de Funcionários</a></li>
+                <li><a class="nav-link" href="{% url 'funcionario:funcionario_create' %}">Cadastrar Funcionário</a></li>
+              </ul>
+            </li>
+            <!-- Equipamentos -->
+            <li class="{% block equipamento %}{% endblock %}">
+              <a href="#" class="nav-link has-dropdown"><i class="fas fa-toolbox"></i> <span>Equipamentos</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{% url 'equipamento:equipamento_list' %}">Lista de Equipamentos</a></li>
+                <li><a class="nav-link" href="{% url 'equipamento:equipamento_create' %}">Cadastrar Equipamento</a></li>
+              </ul>
+            </li>
+            <!-- Informações -->
             <li class="nav-item dropdown">
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-book"></i> <span>Documentação</span></a>
               <ul class="dropdown-menu">
