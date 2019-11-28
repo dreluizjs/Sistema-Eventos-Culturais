@@ -12,6 +12,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('sobre/', views.sobre, name='sobre'),
     
+    #### Urls dos aplicativos do Sistema ####
     path('usuarios/', include('usuario.urls')),  
     path('funcionarios/', include('funcionario.urls')), 
     path('equipamentos/', include('equipamento.urls')), 
