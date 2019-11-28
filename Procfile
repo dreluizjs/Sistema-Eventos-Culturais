@@ -1,1 +1,1 @@
-web:gunicorn siseventos.wsgi --log-file -
+web: gunicorn siseventos.wsgi --log-file -
