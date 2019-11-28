@@ -1,5 +1,6 @@
 astroid==2.3.3
 dj-database-url==0.5.0
+dj-static==0.0.6
 Django==2.2.7
 django-crispy-forms==1.8.0
 gunicorn==20.0.4
@@ -9,8 +10,6 @@ mccabe==0.6.1
 Pillow==6.2.1
 pylint==2.4.4
 python-decouple==3.3
-pytz==2019.3
-six==1.13.0
-sqlparse==0.3.0
+static3==0.7.0
 typed-ast==1.4.0
 wrapt==1.11.2
