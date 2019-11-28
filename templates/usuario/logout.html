@@ -1,0 +1,59 @@
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'node_modules/@fortawesome/fontawesome-free/css/all.css' %}">
+        <link rel="stylesheet" href="{% static 'style/css/datatables.min.css' %}">
+        <link rel="stylesheet" href="{% static 'style/css/style.css' %}">
+
+        <title>SGE Admin | Login</title>
+    </head>
+
+    <body class="bg-light">
+        <div class="container h-100">
+            <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-md-4">
+                    <h1 class="text-center mb-4">SGE Admin</h1>
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="card-body">           
+                                    {{ form|crispy }}            
+                                </div>                                      
+                                <div class="form-check mb-3">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" name="remember" class="form-check-input">
+                                        Lembrar
+                                    </label>
+                                </div>            
+                                <div class="row">
+                                    <div class="col pr-2">
+                                        <button type="submit" class="btn btn-block btn-primary">Login</button>
+                                    </div>
+                                    <div class="col pl-2">
+                                        <a class="btn btn-block btn-link" href="#">Esqueci a senha</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="{% static 'node_modules/jquery/dist/jquery.js' %}"></script>
+        <script src="{% static 'node_modules/popper.js/dist/popper.js' %}"></script>
+        <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.js' %}"></script>
+        <script src="{% static 'js/datatables.min.js' %}"></script>
+        <script src="{% static 'js/admin.min.js' %}"></script>
+        <script src="{% static 'js/static.js' %}"></script>
+    </body>
+</html>
