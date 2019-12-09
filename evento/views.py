@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-from .forms import EventoForm, DespesaForm
+from .forms import EventoForm, DespesaForm, DespesaForm2
 from .models import Evento, Despesa
 from django.contrib import messages
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
@@ -41,12 +42,53 @@ class EventoDetail(DetailView):
     model = Evento
     template_name = 'evento/evento_detail.html'
 
+class EventoCreate(CreateView):
+    model = Evento
+    template_name = 'evento/evento_create.html'
+    form_class = EventoForm
+
+class EventoUpdate(UpdateView):
+    model = Evento
+    template_name = 'evento/evento_edit.html'
+    form_class = EventoForm
+
 
 @login_required
 def despesa_evento(request, pk):
     evento = get_object_or_404 (Evento, pk=pk)
     template_name ='despesa/evento_despesa.html'
     context = {'evento': evento, 'despesa_list': evento.despesas.all()}
+    return render(request, template_name, context)
+
+@login_required
+def despesa_evento2(request, pk):
+    evento = get_object_or_404 (Evento, pk=pk)
+    template_name ='despesa/evento_despesa.html'
+    context = {'evento': evento, 'despesa_list': evento.despesas.all()}
+
+    if request.method == 'GET':
+        return render(request, template_name, context)
+    
+    elif request.method == 'POST':
+        form = DespesaForm2(request.POST)
+        if form.is_valid():
+            titulo = form.cleaned_data['titulo']
+            montante = form.cleaned_data['montante']
+            descricao = form.cleaned_data['descricao']
+
+            messages.success(request, 'Despesa Cadastrada com sucesso!')
+
+            Despesa.objects.create(
+                evento = evento,
+                titulo = titulo,
+                montante = montante,
+                descricao = descricao,          
+            ).save()
+       
+
+    else:
+        form = DespesaForm()
+    
     return render(request, template_name, context)
 
 @login_required

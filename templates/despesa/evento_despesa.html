@@ -1,5 +1,7 @@
 {%extends 'main.html'%}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Eventos &mdash; SGEC{% endblock %}
 
 {% block evento %}active{% endblock %}
@@ -12,6 +14,20 @@
 {% endblock %}
 
 {% block content %}
+
+{% if messages %}
+<div class="alert alert-success alert-dismissible show fade">
+  <div class="alert-body">
+    <button class="close" data-dismiss="alert">
+      <span>&times;</span>
+    </button>
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
 <div class="row">
   <div class="col-lg-4 col-md-4 col-sm-12">
     <div class="card card-statistic-2">
@@ -60,14 +76,18 @@
       </div>
     </div>
   </div>
-
 </div>
+
 
 <div class="row">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h4>Despesas do Evento</h4>
+        <h4>Despesas</h4>
+        <div class="card-header-action">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>
+            Lançar Despesa</button>
+        </div>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -91,11 +111,56 @@
               {% endfor %}
             </tbody>
           </table>
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
 {% endblock %}
 
-{% block script %} {% endblock %}
+{% block modal %}
+
+<div class="modal fade" tabindex="-1" role="dialog" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form" method="POST" novalidate>
+          {% csrf_token %}
+          <div class="form-group">
+            <label>Titulo</label>
+            <div class="input-group">
+              <input type="titulo" id="titulo" class="form-control" placeholder="titulo" name="titulo">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Montante</label>
+            <div class="input-group">
+              <input type="montante" id="montante" class="form-control" placeholder="montante" name="montante">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Descrição</label>
+            <div class="input-group">
+              <input type="descricao" id="descricao" class="form-control" placeholder="descricao" name="descricao">
+            </div>
+          </div>
+
+          <div class="tile-footer">
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+            <button class="btn btn-info" type="reset">Resetar</button>
+            <button class="btn btn-danger" type="cancel">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

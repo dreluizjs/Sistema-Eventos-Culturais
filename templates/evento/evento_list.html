@@ -2,9 +2,9 @@
 
 {% block title %} SGEC Admin|Eventos {% endblock %}
 
-{% block evento %}active{% endblock %}
+{% block evento %}active{% endblock %} {% block eventotb %}active{% endblock %}
 
-{% block titulo %} Eventos {% endblock %}
+{% block titulo %} Eventos {% endblock %} 
 
 {% block section %}
 <h2 class="section-title">Eventos</h2>
@@ -13,22 +13,19 @@
 
 {% block content %}
 
-
-
 {% if messages %}
-<div class="col-lg-4">
-  <div class="bs-component">
-    <div class="alert alert-dismissible alert-success">
-      {% for message in messages %}
-      {{ message }}
-      {% endfor %}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+<div class="alert alert-success alert-dismissible show fade">
+  <div class="alert-body">
+    <button class="close" data-dismiss="alert">
+      <span>&times;</span>
+    </button>
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
   </div>
 </div>
 {% endif %}
+
 <div class="tile-title-w-btn">
   <p><a class="btn btn-primary icon-btn" href="{% url 'evento:evento_create' %}"><i class="fa fa-plus"></i>Cadastrar
       Evento</a></p>

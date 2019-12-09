@@ -4,7 +4,7 @@ from django.utils.text import slugify
 
 class Evento(models.Model):
 
-    nome            = models.CharField(max_length=50, null=True, blank=True)
+    nome            = models.CharField(max_length=50)
     slug            = models.SlugField(max_length=100, unique=True, blank=True)
     organizador     = models.CharField(max_length=30)    
     descricao       = models.TextField(null=True, blank=True)
@@ -14,7 +14,7 @@ class Evento(models.Model):
     datainscricao   = models.DateTimeField(auto_now_add=True)
     update          = models.DateTimeField(auto_now=True)
     status          = models.BooleanField(default=True, null=True, blank=True)    
-    banner         = models.ImageField(upload_to = 'evento/', null=True, blank=True) 
+    banner          = models.ImageField(upload_to = 'evento/', default = 'evento/default.png', null=True, blank=True) 
     
     def __str__(self):
         return self.nome    

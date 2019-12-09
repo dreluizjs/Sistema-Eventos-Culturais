@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from .forms import EquipamentoForm
@@ -8,6 +8,21 @@ from django.views.generic import CreateView, DetailView, ListView, UpdateView, D
 from django.urls import reverse_lazy
 
 # Create your views here.
+
+@login_required
+def equipamento_create(request):
+    template_name='equipamento/equipamento_create.html'
+
+    if request.method == "POST":
+        form = EquipamentoForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Equipamento Cadastrado com sucesso!')
+            return redirect('/equipamentos/')
+    else:
+        form = EquipamentoForm()
+    return render(request, template_name, {'form':form})
 
 class EquipamentoList(ListView):
     queryset = Equipamento.objects.all()

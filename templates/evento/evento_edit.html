@@ -4,7 +4,7 @@
 
 {% block title %} SGEC Admin|Atualização de Evento {% endblock %}
 
-{% block evento %}active{% endblock %}
+{% block evento %}active{% endblock %}{% block eventoadd %}active{% endblock %} 
 
 {% block titulo %}Atualização de Evento{% endblock %}
 
@@ -22,7 +22,7 @@
         <h4>Editar Evento</h4>
       </div>
       <div class="card-body">
-        <form role="form" method="POST" novalidate>
+        <form role="form" method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="form-group">
             {{ form|crispy }}

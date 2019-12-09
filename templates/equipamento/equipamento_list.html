@@ -2,7 +2,7 @@
 
 {% block title %} SGEC Admin| Equipamentos {% endblock %}
 
-{% block equipamento %}active{% endblock %}
+{% block equipamento %}active{% endblock %}{% block equipamentotb %}active{% endblock %}
 
 {% block titulo %} Equipamentos{% endblock %}
 
@@ -14,16 +14,14 @@
 {% block content %}
 
 {% if messages %}
-<div class="col-lg-4">
-  <div class="bs-component">
-    <div class="alert alert-dismissible alert-success">
-      {% for message in messages %}
-      {{ message }}
-      {% endfor %}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+<div class="alert alert-success alert-dismissible show fade">
+  <div class="alert-body">
+    <button class="close" data-dismiss="alert">
+      <span>&times;</span>
+    </button>
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
   </div>
 </div>
 {% endif %}
@@ -37,7 +35,7 @@
   <div class="col-12">
     <div class="card">
       <div class="card-header">
-        <h4>Tabela de Usuários</h4>
+        <h4>Tabela de Equipamentos</h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -71,7 +69,7 @@
                       class="fa fa-fw fa-eye"></i></a>
                   <a href="{{object.get_absolute_url}}editar/" data-toggle="tooltip" title="Editar"><i
                       class="fa fa-fw fa-edit"></i></a>
-                  <a href="{{object.get_absolute_url}}deletar/" data-toggle="tooltip" title="Deletar"><i
+                  <a href="{{object.get_absolute_url}}deletar/" class="delete-btn" data-toggle="tooltip" title="Deletar"><i
                       class="fa fa-fw fa-trash"></i></a>
                 </td>
               </tr>
@@ -88,4 +86,3 @@
 {% endblock %}
 
 
-{% block script %} {% endblock %}
