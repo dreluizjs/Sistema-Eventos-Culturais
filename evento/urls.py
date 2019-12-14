@@ -13,10 +13,12 @@ urlpatterns = [
     path('<int:pk>/', views.EventoDetail.as_view(), name='evento_detail'),   
     path('<int:pk>/editar/', views.EventoUpdate.as_view(), name='evento_edit'),
     path('<int:pk>/deletar/', views.evento_delete, name='evento_delete'),
+    #path('relatorio/', views.Relatorio.as_view(), name='equipamento_report'),
 
     ##### DESPESAS DOS EVENTOS #####
     #path('<slug:evento_slug>/despesas/', views.despesa_evento, name='evento_despesa'),
     path('<int:pk>/despesas/', views.despesa_evento2, name='evento_despesa'),
     path('despesa/', views.DespesaList.as_view(), name='despesa_list'),
-    path('cadastrar/despesa', views.despesa_create, name='despesa_create'), 
+    path('cadastrar/despesa', views.despesa_create, name='despesa_create'),
+    path('relatorio/despesa', views.DespesaRelatorio.as_view(), name='despesa_report'), 
 ]

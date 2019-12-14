@@ -14,7 +14,7 @@ class Evento(models.Model):
     datainscricao   = models.DateTimeField(auto_now_add=True)
     update          = models.DateTimeField(auto_now=True)
     status          = models.BooleanField(default=True, null=True, blank=True)    
-    banner          = models.ImageField(upload_to = 'evento/', default = 'evento/default.png', null=True, blank=True) 
+    banner          = models.ImageField(upload_to = 'evento/', null=True, blank=True) 
     
     def __str__(self):
         return self.nome    

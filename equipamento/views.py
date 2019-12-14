@@ -1,13 +1,19 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from .forms import EquipamentoForm
 from .models import Equipamento
 from django.contrib import messages
-from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
+from django.views.generic import View, CreateView, DetailView, ListView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
+from django.utils import timezone
+from siseventos.render import Render
+
+
 # Create your views here.
+
 
 @login_required
 def equipamento_create(request):
@@ -23,6 +29,14 @@ def equipamento_create(request):
     else:
         form = EquipamentoForm()
     return render(request, template_name, {'form':form})
+
+@login_required
+def equipamento_delete(request, pk):
+    equipamento = get_object_or_404 (Equipamento, pk=pk)
+    equipamento.delete()
+    messages.info(request, 'Equipamento deletado com sucesso!')
+    return redirect('/equipamentos/')
+
 
 class EquipamentoList(ListView):
     queryset = Equipamento.objects.all()
@@ -42,8 +56,14 @@ class EquipamentoUpdate(UpdateView):
     template_name = 'equipamento/equipamento_edit.html'
     form_class = EquipamentoForm
 
-class EquipamentoDelete(DeleteView):
-    model = Equipamento
-    #template_name = 'equipamento/equipamento_delete.html'
-    success_message = 'Success: Book was deleted.'
-    success_url = reverse_lazy('equipamento/')
+class Relatorio(View):
+
+    def get(self, request):
+        equipamento = Equipamento.objects.all()
+        today = timezone.now()
+        params = {
+            'today': today,
+            'equipamento': equipamento,
+            'request': request
+        }
+        return Render.render('equipamento/equipamento_report.html', params)

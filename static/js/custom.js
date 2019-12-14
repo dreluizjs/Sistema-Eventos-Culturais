@@ -7,7 +7,7 @@ $(document).ready(function(){
 		e.preventDefault();
 
 		var delLink = $(this).attr('href');
-		var result = confirm('Deseja Deletar?');
+		var result = confirm('Deseja Deletar? Cuidado, esta ação é permanten!');
 
 		if(result) {
 			window.location.href = delLink;

@@ -80,10 +80,10 @@
 
 <div class="text-md-right">
   <p><div class="float-lg-left mb-lg-0 mb-3">
-      <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>
-        Lançar Despesa</button>
+    <a class="btn btn-primary icon-btn" href="{% url 'equipamento:equipamento_create' %}"><i
+      class="fa fa-dollar-sign"></i> Lançar Despesa</a>
   </div>
-  <a class="btn btn-warning icon-btn icon-left" href="{% url 'evento:despesa_report' %}"><i
+  <a class="btn btn-warning icon-btn icon-left" href="{% url 'equipamento:equipamento_report' %}"><i
     class="fa fa-print"></i> Gerar Relatório</a></p>
 </div>
 
@@ -93,7 +93,7 @@
       <div class="card-header">
         <h4>Despesas</h4>
         <div class="card-header-action">
-            <a class="btn btn-warning icon-btn icon-left" href="{% url 'evento:despesa_report' %}"><i
+            <a class="btn btn-warning icon-btn icon-left" href="{% url 'equipamento:equipamento_report' %}"><i
               class="fa fa-print"></i> Gerar Relatório</a>
           <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-plus"></i>
             Lançar Despesa</button>
@@ -114,7 +114,7 @@
               {% for despesa in despesa_list %}
               <tr>
                 <td>{{despesa.titulo}}</td>
-                <td>{{despesa.datalancamento | date:"d/m/Y" }}</td>
+                <td>{{despesa.datalancamento}}</td>
                 <td>{{despesa.descricao}}</td>
                 <td class="text-right">R$ {{despesa.montante}}</td>
               </tr>
@@ -153,19 +153,15 @@
           <div class="form-group">
             <label>Montante</label>
             <div class="input-group">
-              <div class="input-group-prepend">
-                <div class="input-group-text">
-                  R$
-                </div>
-              </div>
               <input type="montante" id="montante" class="form-control" placeholder="montante" name="montante">
             </div>
           </div>
-          <div class="form-group mb-0">
+          <div class="form-group">
             <label>Descrição</label>
-            <textarea type="descricao" id="descricao" class="form-control" placeholder="descricao" name="descricao"></textarea>
+            <div class="input-group">
+              <textarea class="summernote-simple"></textarea>
+            </div>
           </div>
-          <br><br>
 
           <div class="tile-footer">
             <button class="btn btn-primary" type="submit">Cadastrar</button>

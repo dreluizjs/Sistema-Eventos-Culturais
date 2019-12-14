@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'funcionario',
     'equipamento',
     'evento',
-
 ]
 
 MIDDLEWARE = [

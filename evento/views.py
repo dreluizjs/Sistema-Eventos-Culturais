@@ -6,7 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .forms import EventoForm, DespesaForm, DespesaForm2
 from .models import Evento, Despesa
 from django.contrib import messages
-from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView, View
+
+from django.utils import timezone
+from .render import Render
 
 
 @login_required
@@ -84,7 +87,6 @@ def despesa_evento2(request, pk):
                 montante = montante,
                 descricao = descricao,          
             ).save()
-       
 
     else:
         form = DespesaForm()
@@ -114,6 +116,19 @@ class DespesaCreate(CreateView):
     template_name = 'despesa/despesa_create.html'
     form_class = Despesa
     success_message = 'Despesa cadastrada com sucesso.'
+
+class DespesaRelatorio(View):
+
+    def get(self, request):
+        evento = Evento.objects.all()
+        today = timezone.now()
+        params = {
+            'today': today,
+            'evento': evento,
+            'request': request
+        }
+        return Render.render('evento/despesa_report.html', params)
+
 
 
 

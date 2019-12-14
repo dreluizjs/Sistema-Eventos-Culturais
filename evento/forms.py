@@ -43,7 +43,6 @@ class DespesaForm(forms.ModelForm):
         fields =  '__all__'
 
 class DespesaForm2(forms.Form):
-    titulo = forms.CharField()
-    montante = forms. DecimalField()
-    descricao = forms.CharField()
-
+    titulo = forms.CharField(max_length=25)
+    montante = forms.DecimalField(max_digits=8, decimal_places=2)
+    descricao = forms.CharField(widget=forms.Textarea)

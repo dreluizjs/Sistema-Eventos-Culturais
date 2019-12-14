@@ -14,7 +14,8 @@
 {% block content %}
 
 <div class="tile-title-w-btn">
-  <p><a class="btn btn-primary icon-btn" href="{% url 'evento:despesa_create' %}"><i class="fa fa-plus"></i>Lançar Despesa</a></p>
+  <p><a class="btn btn-primary icon-btn" href="{% url 'evento:despesa_create' %}"><i class="fa fa-plus"></i>Lançar
+      Despesa</a></p>
 </div>
 
 <div class="row">
@@ -49,8 +50,8 @@
                       class="fa fa-fw fa-eye"></i></a>
                   <a href="{{object.get_absolute_url}}editar/" data-toggle="tooltip" title="Editar"><i
                       class="fa fa-fw fa-edit"></i></a>
-                  <a href="{{object.get_absolute_url}}deletar/" data-toggle="tooltip" title="Deletar"><i
-                      class="fa fa-fw fa-trash"></i></a>
+                  <a href="{{object.get_absolute_url}}deletar/" class="delete-btn" data-toggle="tooltip"
+                    title="Deletar"><i class="fa fa-fw fa-trash"></i></a>
                 </td>
               </tr>
               {% endfor %}

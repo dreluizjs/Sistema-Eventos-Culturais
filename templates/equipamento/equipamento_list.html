@@ -26,10 +26,15 @@
 </div>
 {% endif %}
 
-<div class="tile-title-w-btn">
-  <p><a class="btn btn-primary icon-btn" href="{% url 'equipamento:equipamento_create' %}"><i
-        class="fa fa-plus"></i>Cadastrar Equipamento</a></p>
+<div class="text-md-right">
+  <p><div class="float-lg-left mb-lg-0 mb-3">
+    <a class="btn btn-primary icon-btn" href="{% url 'equipamento:equipamento_create' %}"><i
+      class="fa fa-plus"></i> Cadastrar Equipamento</a>
+  </div>
+  <a class="btn btn-warning icon-btn icon-left" href="{% url 'equipamento:equipamento_report' %}"><i
+    class="fa fa-print"></i> Gerar Relatório</a></p>
 </div>
+
 
 <div class="row">
   <div class="col-12">
